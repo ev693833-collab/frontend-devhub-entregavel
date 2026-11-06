@@ -14,3 +14,9 @@ Desktop.ini
 
 # Logs
 *.log
+
+# Dependências Node
+node_modules/
+dist/
+.vite/
+

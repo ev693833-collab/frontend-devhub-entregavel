@@ -78,28 +78,21 @@ devhub-entregavel/
 2. Clique com o botão direito no arquivo `frontend/index.html`.
 3. Escolha **"Open with Live Server"**.
 
+### Opção 3: Execução com Node / npm (Vite)
+1. Certifique-se de ter as dependências instaladas (`npm install`).
+2. Execute no terminal:
+   ```bash
+   npm run dev
+   ```
+3. A aplicação abrirá automaticamente no navegador em `http://localhost:5173/`.
+
 ---
 
-## 📤 Como Publicar o Código no GitHub
+## 🌿 Fluxo Git & Pull Request
 
-Para publicar este projeto em um novo repositório no seu GitHub, siga os passos abaixo no terminal:
-
-```bash
-# 1. Certifique-se de estar na raiz do projeto:
-cd "c:\Users\Pedro Henrique\Desktop\Devhub\devhub entregavel"
-
-# 2. Adicione os arquivos ao Git:
-git add .
-
-# 3. Crie o primeiro commit:
-git commit -m "feat: primeira versao visual do BookHub (frontend)"
-
-# 4. Crie um novo repositório vazio no GitHub (ex: bookhub-frontend)
-
-# 5. Conecte o repositório remoto:
-git remote add origin https://github.com/ev693833-collab/frontend-devhub-entregavel.git
-
-# 6. Envie o código para o GitHub:
-git branch -M main
-git push -u origin main
-```
+O desenvolvimento seguiu as boas práticas solicitadas na atividade:
+1. **Branch de funcionalidade**: Trabalho realizado na branch `feature/frontend`.
+2. **Histórico de Commits**: Commits atômicos e descritivos:
+   - `feat: primeira versão visual do BookHub (frontend com HTML, CSS e JS)`
+   - `feat: configurar npm e vite para suportar npm run dev`
+3. **Pull Request**: Abertura de PR da branch `feature/frontend` para a branch principal `main`.

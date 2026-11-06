@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHub — Gerenciador de Obras</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        <path d="M9 7h6"></path>
+                        <path d="M9 11h4"></path>
+                    </svg>
+                </span>
+                <div>
+                    <h1 class="logo-title">BookHub</h1>
+                    <p class="logo-tagline">Plataforma de Gerenciamento Literário</p>
+                </div>
+            </div>
+            <div class="header-stats" id="headerStats">
+                <span class="stats-badge">
+                    <strong id="totalBooksCount">0</strong> obras cadastradas
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container main-layout">
+            <!-- Seção de Cadastro -->
+            <section class="section-card form-section" aria-labelledby="form-heading">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 id="form-heading" class="section-title">Cadastrar Nova Obra</h2>
+                        <p class="section-subtitle">Preencha as informações para registrar o livro no acervo</p>
+                    </div>
+                </div>
+
+                <form id="bookForm" class="book-form" novalidate>
+                    <div class="form-group">
+                        <label for="bookTitle" class="form-label">
+                            Título da obra <span class="required-indicator">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="bookTitle" 
+                            name="title" 
+                            class="form-input" 
+                            placeholder="Ex: Dom Casmurro"
+                            autocomplete="off"
+                        >
+                        <span class="error-message" id="errorTitle"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bookAuthor" class="form-label">
+                            Nome do autor <span class="required-indicator">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="bookAuthor" 
+                            name="author" 
+                            class="form-input" 
+                            placeholder="Ex: Machado de Assis"
+                            autocomplete="off"
+                        >
+                        <span class="error-message" id="errorAuthor"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group form-col">
+                            <label for="bookGenre" class="form-label">
+                                Categoria ou gênero <span class="required-indicator">*</span>
+                            </label>
+                            <select id="bookGenre" name="genre" class="form-select">
+                                <option value="">Selecione uma categoria</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Ficção Científica">Ficção Científica</option>
+                                <option value="Fantasia">Fantasia</option>
+                                <option value="Literatura Clássica">Literatura Clássica</option>
+                                <option value="Biografia">Biografia</option>
+                                <option value="História">História</option>
+                                <option value="Filosofia">Filosofia</option>
+                                <option value="Tecnologia">Tecnologia</option>
+                                <option value="Suspense / Mistério">Suspense / Mistério</option>
+                                <option value="Desenvolvimento Pessoal">Desenvolvimento Pessoal</option>
+                                <option value="Poesia">Poesia</option>
+                                <option value="Outros">Outros</option>
+                            </select>
+                            <span class="error-message" id="errorGenre"></span>
+                        </div>
+
+                        <div class="form-group form-col">
+                            <label for="bookYear" class="form-label">
+                                Ano de publicação <span class="required-indicator">*</span>
+                            </label>
+                            <input 
+                                type="number" 
+                                id="bookYear" 
+                                name="year" 
+                                class="form-input" 
+                                placeholder="Ex: 1899"
+                                min="1" 
+                                max="2099"
+                            >
+                            <span class="error-message" id="errorYear"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bookDescription" class="form-label">
+                            Descrição da obra <span class="optional-label">(opcional)</span>
+                        </label>
+                        <textarea 
+                            id="bookDescription" 
+                            name="description" 
+                            class="form-textarea" 
+                            rows="4" 
+                            placeholder="Escreva uma breve sinopse ou notas sobre a obra..."
+                        ></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="btnSubmitBook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                                <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                <polyline points="7 3 7 8 15 8"></polyline>
+                            </svg>
+                            Cadastrar Obra
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Seção de Listagem -->
+            <section class="section-card list-section" aria-labelledby="list-heading">
+                <div class="section-header list-section-header">
+                    <div>
+                        <h2 id="list-heading" class="section-title">Obras Cadastradas</h2>
+                        <p class="section-subtitle">Explore os livros registrados no acervo do BookHub</p>
+                    </div>
+                </div>
+
+                <!-- Notificação de feedback -->
+                <div id="toastNotification" class="toast-notification hidden" role="status" aria-live="polite"></div>
+
+                <!-- Container onde os cards serão inseridos dinamicamente -->
+                <div id="booksGrid" class="books-grid">
+                    <!-- Os cards são gerados via JavaScript -->
+                </div>
+
+                <!-- Mensagem exibida caso não haja nenhuma obra -->
+                <div id="emptyState" class="empty-state hidden">
+                    <div class="empty-state-icon">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="empty-state-title">A biblioteca está vazia</h3>
+                    <p class="empty-state-text">Nenhuma obra cadastrada até o momento. Utilize o formulário ao lado para registrar seu primeiro livro!</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 <strong>BookHub</strong> — Sistema de Gerenciamento de Obras. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>

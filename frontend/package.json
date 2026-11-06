@@ -1,0 +1,14 @@
+{
+  "name": "bookhub-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BookHub - Gerenciador de Obras Literárias",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}
